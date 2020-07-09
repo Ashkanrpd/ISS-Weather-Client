@@ -5,11 +5,13 @@ import Result from "./result.jsx";
 import MyError from "./error.jsx";
 
 function App() {
+  const [result, setResult] = useState(undefined);
   const [user, setUserCoords] = useState({
     latitude: undefined,
     longitude: undefined,
   });
-  const [result, setResult] = useState(undefined);
+  console.log("user", user);
+
   async function callBackend() {
     let response = await fetch(
       `http://localhost:4000/calc?latitude=${user.latitude}&longitude=${user.longitude}`
@@ -18,17 +20,20 @@ function App() {
     console.log(body);
     setResult(JSON.parse(body));
   }
+
   function userCoords() {
     navigator.geolocation.getCurrentPosition(function (position) {
       if (position) {
         setUserCoords({
-          latitide: position.coords.latitude,
+          latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
       } else throw new Error("There is no coords for the user");
     });
   }
+
   useEffect(() => userCoords(), []);
+
   return (
     <div className="App">
       <Home />
@@ -38,7 +43,9 @@ function App() {
       {result && result.code === 200 && result.success && (
         <Result result={result} />
       )}
-      {result && !result.success && <MyError result={result} />}
+      {result && result.code !== 200 && !result.success && (
+        <MyError result={result} />
+      )}
     </div>
   );
 }
