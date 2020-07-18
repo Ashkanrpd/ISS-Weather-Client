@@ -1,5 +1,9 @@
 # ISS-Weather (Client)
 
+### URL:
+
+https://warm-beyond-99964.herokuapp.com/
+
 ### Features:
 
 - Find the coordinates of the International Space Station live
@@ -13,6 +17,8 @@
 - JavaScript
 - React
 - Hooks
+- Docker
+- Heroku
 
 ![image info](./public/home.png)  
 ![image info](./public/result.png)  

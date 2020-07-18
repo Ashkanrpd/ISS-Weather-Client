@@ -14,7 +14,7 @@ function App() {
 
   async function callBackend() {
     let response = await fetch(
-      `http://localhost:4000/calc?latitude=${user.latitude}&longitude=${user.longitude}`
+      `https://still-dusk-85699.herokuapp.com/calc?latitude=${user.latitude}&longitude=${user.longitude}`
     );
     let body = await response.text();
     console.log(body);

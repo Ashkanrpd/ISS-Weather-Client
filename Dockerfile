@@ -1,8 +1,3 @@
-
-
-
-
-
 FROM node:12-alpine
 WORKDIR /ISS-CLIENT
 COPY package*.json ./
