@@ -13,10 +13,38 @@ body {
   margin-top: 50px;
   margin-left: 50px;
 }
+.waiting {
+  padding: 0px 50px;
+  margin-top: 20px;
+  margin-left: 40px;
+  color: lightcoral;
+  font-weight: 700;
+  animation-name: fadeIn;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  text-rendering: geometricPrecision;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 button {
   padding: 10px 50px;
   margin-top: 20px;
   margin-left: 200px;
+  width: 170px;
+  height: 50px;
 }
 .error {
   margin-left: 60px;

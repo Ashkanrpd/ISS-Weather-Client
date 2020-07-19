@@ -15,10 +15,7 @@ export default function Home() {
           The distance and the temperature difference between the two points.
         </li>
       </ul>
-      <div>
-        Are you ready to see how cool this app is? then click on the START
-        button.
-      </div>
+      <div>Are you ready to see how cool this app is?</div>
     </div>
   );
 }

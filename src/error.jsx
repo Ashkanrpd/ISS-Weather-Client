@@ -7,7 +7,7 @@ export default function MyError(props) {
       <div> Ops, Something went wrong! Please try again later...</div>
       <div>
         {" "}
-        This usually happens when we are unable to gather all the information
+        This usually happens when we are unable to gather all the information.
       </div>
     </div>
   );

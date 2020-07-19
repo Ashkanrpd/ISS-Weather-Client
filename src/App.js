@@ -5,20 +5,22 @@ import Result from "./result.jsx";
 import MyError from "./error.jsx";
 
 function App() {
+  const [btn, setBtn] = useState(false);
   const [result, setResult] = useState(undefined);
   const [user, setUserCoords] = useState({
     latitude: undefined,
     longitude: undefined,
   });
-  console.log("user", user);
 
   async function callBackend() {
+    setBtn(true);
+    setResult(undefined);
     let response = await fetch(
       `https://still-dusk-85699.herokuapp.com/calc?latitude=${user.latitude}&longitude=${user.longitude}`
     );
     let body = await response.text();
-    console.log(body);
     setResult(JSON.parse(body));
+    setBtn(false);
   }
 
   function userCoords() {
@@ -37,9 +39,16 @@ function App() {
   return (
     <div className="App">
       <Home />
-      <button onClick={() => callBackend()}>
-        {result ? "Start Again" : "Start"}{" "}
-      </button>
+      {user.latitude && user.longitude ? (
+        <button onClick={() => callBackend()} disabled={btn}>
+          {result ? "Start Again" : "Start"}{" "}
+        </button>
+      ) : (
+        <div className="waiting">
+          {" "}
+          Collecting user coordinates, please wait...
+        </div>
+      )}
       {result && result.code === 200 && result.success && (
         <Result result={result} />
       )}
