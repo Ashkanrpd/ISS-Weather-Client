@@ -9,6 +9,10 @@ export default function MyError(props) {
         {" "}
         This usually happens when we are unable to gather all the information.
       </div>
+      <div>
+        E.g. ISS is in the middle of the ocean or somewhere where information is
+        not accessible.
+      </div>
     </div>
   );
 }
